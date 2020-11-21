@@ -10,16 +10,17 @@ import "./Header.css";
 function Header() {
   return (
     <div className="header">
-      <Link className="icon" to="/">
-        <BlurOnIcon />
-      </Link>
+      <div className="header_left">
+        <Link className="icon" to="/">
+          <BlurOnIcon />
+        </Link>
 
-      <div className="sections_header"></div>
+        <h1>About us</h1>
+        <h1>Contact</h1>
+      </div>
 
       <div className="header_right">
-        <p>Share your Wasi</p>
-        <LanguageIcon />
-        <ExpandMoreIcon />
+        <p>Register</p>
         <Avatar />
       </div>
     </div>
