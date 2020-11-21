@@ -1,7 +1,7 @@
 
-var async = require('async');
-var ZapClient = require('zaproxy');
-
+const async = require('async');
+const ZapClient = require('zaproxy');
+const apiKey = process.env.API_KEY;
 
 exports.scanUrl = function (
     url,
@@ -14,8 +14,9 @@ exports.scanUrl = function (
     // Initialization of parameters
 
     // configuration of api key and proxy
+
     const zapOptions = {
-        apiKey: 'vje2j6hiif9koad47e44bgcofa',
+        apiKey: apiKey,
         proxy: 'http://localhost:8080'
     };
 

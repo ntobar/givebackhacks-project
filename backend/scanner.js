@@ -16,7 +16,7 @@ exports.scanUrl = function (req, res) {
     // let contextName = params.contextName;
     // let subtreeOnly = params.subtreeOnly;
 
-    let url = 'http://www.itsecgames.com'
+    let url = req.body.uri;// 'http://www.itsecgames.com'
 
     let maxChildren = 10;
     let recurse = false;
