@@ -3,7 +3,7 @@ import "./Footer.css";
 
 function Footer() {
   return (
-    <div className="footer">
+    <div className="main_footer">
       <div className="container">
         <div className="row">
           <div className="col">
@@ -24,10 +24,11 @@ function Footer() {
               </ul>
             </div>
           </div>
+          <hr />
           <div className="row">
             <p className="col-smol">
-              &copy;[new Date().getFullYear()] Thick memes inc |rights reserved
-              | terms of service |privacy
+              &copy;{new Date().getFullYear} copy;[new Date().getFullYear()]
+              Thick memes inc |rights reserved | terms of service |privacy}
             </p>
           </div>
         </div>
