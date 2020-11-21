@@ -28,7 +28,7 @@ function Landing() {
           </p>
           <div className="url_textField">
             <input
-              placeholder="Copy your URL here"
+              placeholder="Paste your URL here"
               className="urlInput"
               type="text"
             />

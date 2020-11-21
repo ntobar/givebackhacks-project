@@ -4,17 +4,17 @@ import SearchIcon from "@material-ui/icons/Search";
 import LanguageIcon from "@material-ui/icons/Language";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { Avatar } from "@material-ui/core";
+import BlurOnIcon from "@material-ui/icons/BlurOn";
 import "./Header.css";
 
 function Header() {
   return (
     <div className="header">
-      <Link to="/">I</Link>
+      <Link className="icon" to="/">
+        <BlurOnIcon />
+      </Link>
 
-      <div className="header_center">
-        <input type="text" />
-        <SearchIcon />
-      </div>
+      <div className="sections_header"></div>
 
       <div className="header_right">
         <p>Share your Wasi</p>

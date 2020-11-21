@@ -13,6 +13,33 @@
   height: 100vh;
 }
 
+.url_textField {
+  display: flex;
+  flex-direction: row;
+}
+
+::-webkit-input-placeholder {
+  text-align: center;
+}
+
+.url_textField > button {
+  margin-left: 20px;
+  height: 54px;
+  width: 20%;
+  background-color: #66fcf1;
+  color: black;
+  border: 3px solid black;
+  border-radius: 10px;
+  outline: none;
+  margin-top: 20px;
+}
+
+.url_textField > button:hover {
+  background-color: #1f2833;
+  color: white;
+  border: 3px solid #66fcf1;
+}
+
 .home > background {
   width: 100%;
   z-index: -1;
