@@ -10,10 +10,6 @@ function Landing() {
   const history = useHistory();
   const [url, setUrl] = useState("");
 
-  const sendUrl = (e) => {
-    history.push("/results");
-  };
-
   async function postData(urlurl = "", data = {}) {
     // Default options are marked with *
     const response = await fetch(urlurl, {
@@ -31,11 +27,35 @@ function Landing() {
     return dataref; // parses JSON response into native JavaScript objects
   }
 
-  postData("https://react-tobar-chat.herokuapp.com/", { url: url }).then(
-    (data) => {
-      console.log("urlrurrrurlr", data); // JSON data parsed by `data.json()` call
+  const bodyData = {
+    uri: url,
+  };
+
+  const sendData = (data) => {
+    console.log("data is -->", data);
+
+    fetch("http://127.0.0.1:3050/scan", {
+      method: "post",
+      body: JSON.stringify({ uri: data }),
+      headers: { "Content-Type": "application/json" },
+    })
+      .then((response) => response.json())
+      .then((json) => console.log(json));
+  };
+
+  const sendUrl = (e) => {
+    console.log("sendURL being called");
+    try {
+      sendData(url);
+      //postData("http://localhost:3000/scan", { url: url }).then((data) => {
+      //console.log("urlrurrrurlr", data); // JSON data parsed by `data.json()` call
+      //});
+    } catch (err) {
+      console.log("err");
     }
-  );
+
+    history.push("/results");
+  };
 
   return (
     <div className="home">
