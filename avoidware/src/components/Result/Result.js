@@ -5,11 +5,6 @@ import ReactCardFlip from "react-card-flip";
 
 function Result({ url, name, rating1, rating2, desc, solution }) {
   document.body.style = "background:#2f4454 ";
-  const [isFlipped, setIsFlipped] = useState(false);
-
-  const handleHover = () => {
-    setIsFlipped(!isFlipped);
-  };
 
   return (
     <div className="result">
@@ -20,8 +15,7 @@ function Result({ url, name, rating1, rating2, desc, solution }) {
           <strong>Vulnerability: 4.2</strong>
           <strong>Trust Factor: 8.7</strong>
         </p>
-      </div>
-      <div className="result_info">
+
         <h3>Description</h3>
         <p>
           Injection flaws, such as SQL, NoSQL, OS, and LDAP injection, occur

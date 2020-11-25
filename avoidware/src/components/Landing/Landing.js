@@ -12,7 +12,7 @@ function Landing() {
 
   async function postData(urlurl = "", data = {}) {
     // Default options are marked with *
-    const response = await fetch(urlurl, {
+    const response = fetch(urlurl, {
       method: "POST", // *GET, POST, PUT, DELETE, etc.
 
       headers: {
@@ -31,10 +31,10 @@ function Landing() {
     uri: url,
   };
 
-  const sendData = (data) => {
+  const sendData = async (data) => {
     console.log("data is -->", data);
 
-    fetch("http://127.0.0.1:3050/scan", {
+    await fetch("http://127.0.0.1:3050/scan", {
       method: "post",
       body: JSON.stringify({ uri: data }),
       headers: { "Content-Type": "application/json" },
