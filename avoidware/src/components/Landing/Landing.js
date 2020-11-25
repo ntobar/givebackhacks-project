@@ -7,8 +7,8 @@ import { Button } from "@material-ui/core";
 import { useHistory } from "react-router-dom";
 import { useStateValue } from "../../StateProvider";
 
-function Landing() {
-  const [{ alertList }, dispatch] = useStateValue();
+function Landing(props) {
+  //const [{ alertList }, dispatch] = useStateValue();
 
   const history = useHistory();
   const [url, setUrl] = useState("");
@@ -55,6 +55,8 @@ function Landing() {
         const lov = resAlert.data.site[0].alerts;
         setArrayV(lov);
         console.log("Array of V --> ", lov);
+        console.log("testing Getter -> ", lov[0]);
+        console.log("getting desc ", lov[0].alert);
       } catch (error) {
         console.log(error);
       }
@@ -81,14 +83,14 @@ function Landing() {
       console.log("err");
     }
 
-    dispatch({
-      type: "SET_ALERTS",
-      alertList: arrayV,
-    });
+    // dispatch({
+    //   type: "SET_ALERTS",
+    //   alertList: arrayV,
+    // });
 
     history.push({
       pathname: "/results",
-      state: arrayV,
+      state: { lovs: arrayV },
     });
   };
 

@@ -5,6 +5,8 @@ export const initialState = {
 //This is a selector
 export const getAlertsTotal = (alertList) => alertList.length;
 
+export const getAlertIx = (alertList) => alertList[0];
+
 const reducer = (state, action) => {
   console.log(action);
   switch (action.type) {
