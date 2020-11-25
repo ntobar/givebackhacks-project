@@ -5,10 +5,15 @@ import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import { Button } from "@material-ui/core";
 import { useHistory } from "react-router-dom";
+import { useStateValue } from "../../StateProvider";
 
 function Landing() {
+  const [{ alertList }, dispatch] = useStateValue();
+
   const history = useHistory();
   const [url, setUrl] = useState("");
+  const [alerts, setAlerts] = useState({});
+  const [arrayV, setArrayV] = useState({});
 
   async function postData(urlurl = "", data = {}) {
     // Default options are marked with *
@@ -34,13 +39,35 @@ function Landing() {
   const sendData = async (data) => {
     console.log("data is -->", data);
 
-    await fetch("http://127.0.0.1:3050/scan", {
-      method: "post",
-      body: JSON.stringify({ uri: data }),
-      headers: { "Content-Type": "application/json" },
-    })
-      .then((response) => response.json())
-      .then((json) => console.log(json));
+    try {
+      const response = await fetch("http://127.0.0.1:3050/scan", {
+        method: "post",
+        body: JSON.stringify({ uri: data }),
+        headers: { "Content-Type": "application/json" },
+      });
+
+      const resAlert = await response.json();
+      window.data = resAlert;
+      setAlerts(resAlert);
+      console.log("resAlert ->>", resAlert);
+
+      try {
+        const lov = resAlert.data.site[0].alerts;
+        setArrayV(lov);
+        console.log("Array of V --> ", lov);
+      } catch (error) {
+        console.log(error);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+
+    // .then((response) => response.json())
+    // .then((json) => {
+    //   window
+    //   console.log("ALERTSSSS ->>", json)
+    // })
+    // .then(console.log("resALERTS SET TO --> ", resAlerts));
   };
 
   const sendUrl = (e) => {
@@ -54,7 +81,15 @@ function Landing() {
       console.log("err");
     }
 
-    history.push("/results");
+    dispatch({
+      type: "SET_ALERTS",
+      alertList: arrayV,
+    });
+
+    history.push({
+      pathname: "/results",
+      state: arrayV,
+    });
   };
 
   return (
