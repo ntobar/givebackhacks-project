@@ -1,5 +1,6 @@
 export const initialState = {
   alertList: [],
+  url: null,
 };
 
 //This is a selector
@@ -13,7 +14,13 @@ const reducer = (state, action) => {
     case "SET_ALERTS":
       return {
         ...state,
-        alertList: [...state.alertList],
+        alertList: action.item,
+      };
+
+    case "SET_URL":
+      return {
+        ...state,
+        url: action.item,
       };
 
     case "REMOVE_FROM_BASKET":

@@ -1,5 +1,8 @@
 .results {
+  display: flex;
+  flex-direction: column;
   background-color: #1f2833;
+  align-items: center;
   text-align: center;
   color: white;
 }
@@ -9,4 +12,14 @@
   flex-direction: column;
   text-align: left;
   margin-left: 20px;
+}
+
+.title_2 {
+  align-items: center;
+  width: 20%;
+  border-bottom: 2px solid #66fcf1;
+}
+
+.url {
+  color: #66fcf1;
 }

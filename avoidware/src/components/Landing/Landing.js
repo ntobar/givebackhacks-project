@@ -7,13 +7,27 @@ import { Button } from "@material-ui/core";
 import { useHistory } from "react-router-dom";
 import { useStateValue } from "../../StateProvider";
 
-function Landing(props) {
-  //const [{ alertList }, dispatch] = useStateValue();
+function Landing() {
+  const [{ alertList }, dispatch] = useStateValue();
 
   const history = useHistory();
   const [url, setUrl] = useState("");
   const [alerts, setAlerts] = useState({});
   const [arrayV, setArrayV] = useState({});
+
+  const setList = (item) => {
+    dispatch({
+      type: "SET_ALERTS",
+      item: item,
+    });
+  };
+
+  const setURL = (item) => {
+    dispatch({
+      type: "SET_URL",
+      item: item,
+    });
+  };
 
   async function postData(urlurl = "", data = {}) {
     // Default options are marked with *
@@ -36,7 +50,7 @@ function Landing(props) {
     uri: url,
   };
 
-  const sendData = async (data) => {
+  const sendDataScan = async (data) => {
     console.log("data is -->", data);
 
     try {
@@ -52,11 +66,29 @@ function Landing(props) {
       console.log("resAlert ->>", resAlert);
 
       try {
-        const lov = resAlert.data.site[0].alerts;
+        console.log("------------site find start----------------");
+        console.log("---- data.site ---- ", resAlert.data.site);
+        console.log(
+          "------ @name ------ ",
+          resAlert.data.site[url] || resAlert.data.site[url + "/"]
+        );
+        console.log("------- url ------- ", url);
+        console.log("---- sliced url ---", url.slice(0, -1));
+        // console.log("--- manual test --- ", resAlert.data.site[]);
+        const siteFind = resAlert.data.site.filter(function (item) {
+          return item["@name"] === url || item["@name"] === url.slice(0, -1);
+        });
+
+        console.log("Site Find --> ", siteFind);
+        const lov = siteFind[0].alerts;
+        console.log("SITES: -->", resAlert.data.site);
+        console.log("alerts --> ", lov);
+        //const atap = resAlert.data.site.find(toSearch);
         setArrayV(lov);
-        console.log("Array of V --> ", lov);
-        console.log("testing Getter -> ", lov[0]);
-        console.log("getting desc ", lov[0].alert);
+        setList(lov);
+        //console.log("Array of V --> ", lov);
+        //console.log("Current Site Alerts -> ", lov);
+        //console.log("EASYA check -->", siteFind);
       } catch (error) {
         console.log(error);
       }
@@ -72,10 +104,63 @@ function Landing(props) {
     // .then(console.log("resALERTS SET TO --> ", resAlerts));
   };
 
-  const sendUrl = (e) => {
+  const sendDataSpider = async (data) => {
+    console.log("data is -->", data);
+
+    try {
+      const response = await fetch("http://127.0.0.1:3050/scan", {
+        method: "post",
+        body: JSON.stringify({ uri: data }),
+        headers: { "Content-Type": "application/json" },
+      });
+
+      // const resAlert = await response.json();
+      // window.data = resAlert;
+      // setAlerts(resAlert);
+      // console.log("resAlert ->>", resAlert);
+
+      // try {
+      //   const siteFind = resAlert.data.site.filter(function (item) {
+      //     return item["@name"] == url || item["@name"] === url + "/";
+      //   });
+      // } catch (error) {
+      //   console.log(error);
+      // }
+    } catch (err) {
+      console.log(err);
+    }
+
+    // .then((response) => response.json())
+    // .then((json) => {
+    //   window
+    //   console.log("ALERTSSSS ->>", json)
+    // })
+    // .then(console.log("resALERTS SET TO --> ", resAlerts));
+  };
+
+  const sendUrlSpider = (e) => {
     console.log("sendURL being called");
     try {
-      sendData(url);
+      sendDataSpider(url);
+      setURL(url);
+      //postData("http://localhost:3000/scan", { url: url }).then((data) => {
+      //console.log("urlrurrrurlr", data); // JSON data parsed by `data.json()` call
+      //});
+    } catch (err) {
+      console.log("err");
+    }
+
+    // dispatch({
+    //   type: "SET_ALERTS",
+    //   alertList: arrayV,
+    // });
+  };
+
+  const sendUrlScan = (e) => {
+    console.log("sendURL being called");
+    try {
+      sendDataScan(url);
+      setURL(url);
       //postData("http://localhost:3000/scan", { url: url }).then((data) => {
       //console.log("urlrurrrurlr", data); // JSON data parsed by `data.json()` call
       //});
@@ -109,7 +194,8 @@ function Landing(props) {
               type="text"
               onChange={(event) => setUrl(event.target.value)}
             />
-            <button onClick={sendUrl}>Test</button>
+            <button onClick={sendUrlSpider}>Test</button>
+            <button onClick={sendUrlScan}>Retrieve Scan</button>
           </div>
         </div>
       </div>

@@ -9,7 +9,7 @@ exports.scanUrl = function (
   recurse,
   contextName,
   subtreeOnly,
-  callback
+  callbackg
 ) {
   // Initialization of parameters
 
@@ -48,6 +48,7 @@ exports.scanUrl = function (
             if (resp) {
               console.info("Response:", resp);
               let result = resp.scan;
+              console.info("result -> ", result);
               callback(null, result);
             }
           }
@@ -112,7 +113,7 @@ exports.scanUrl = function (
       },
     ],
     function (err, result) {
-      callback(err, result);
+      callbackg(err, result);
     }
   );
 };
