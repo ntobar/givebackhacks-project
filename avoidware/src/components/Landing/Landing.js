@@ -4,8 +4,10 @@ import backgroundImg from "../../img/cool-background.png";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import { Button } from "@material-ui/core";
+import LinearProgress from "@material-ui/core/LinearProgress";
 import { useHistory } from "react-router-dom";
 import { useStateValue } from "../../StateProvider";
+import Spinner from "../Spinner/Spinner";
 
 function Landing() {
   const [{ alertList }, dispatch] = useStateValue();
@@ -14,6 +16,10 @@ function Landing() {
   const [url, setUrl] = useState("");
   const [alerts, setAlerts] = useState({});
   const [arrayV, setArrayV] = useState({});
+  const [loading, setLoading] = useState("none");
+  const [disabled, setDisabled] = useState(true);
+  const [display, setDisplay] = useState(null);
+  const [retrieve, setRetrieve] = useState(false);
 
   const setList = (item) => {
     dispatch({
@@ -106,6 +112,7 @@ function Landing() {
 
   const sendDataSpider = async (data) => {
     console.log("data is -->", data);
+    setLoading("flex");
 
     try {
       const response = await fetch("http://127.0.0.1:3050/scan", {
@@ -139,6 +146,9 @@ function Landing() {
   };
 
   const sendUrlSpider = (e) => {
+    setDisplay("none");
+    // setTimeout(setDisplay("flex"), 3000);
+    setLoading("true");
     console.log("sendURL being called");
     try {
       sendDataSpider(url);
@@ -179,28 +189,54 @@ function Landing() {
     });
   };
 
-  return (
-    <div className="home">
-      <div className="home_container">
-        <div className="title_container">
-          <h1 className="heading">Clear URL</h1>
-          <p className="info">
-            An automated malware scan tool for any web page
-          </p>
-          <div className="url_textField">
-            <input
-              placeholder="Paste your URL here"
-              className="urlInput"
-              type="text"
-              onChange={(event) => setUrl(event.target.value)}
-            />
-            <button onClick={sendUrlSpider}>Test</button>
-            <button onClick={sendUrlScan}>Retrieve Scan</button>
+  if (loading === "none" && retrieve === false) {
+    return (
+      <div className="home">
+        <div className="home_container">
+          <div style={{ display: display }} className="title_container">
+            <h1 className="heading">Clear URL</h1>
+            <p className="info">
+              An automated malware scan tool for any web page
+            </p>
+            <div className="url_textField">
+              <input
+                placeholder="Paste your URL here"
+                className="urlInput"
+                type="text"
+                onChange={(event) => {
+                  setUrl(event.target.value);
+                  setDisabled(false);
+                }}
+              />
+              <button disabled={disabled} onClick={sendUrlSpider}>
+                Test
+              </button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  }
+
+  //For loading spinner
+  if (loading === "flex" && retrieve === false) {
+    return (
+      <div className="spinner">
+        <div style={{ display: loading }}>
+          <Spinner />
+        </div>
+      </div>
+    );
+  }
+
+  //After spinner, only retrieve data button shows
+  if (loading === "none" && retrieve === true) {
+    return (
+      <div>
+        <button onClick={sendUrlScan}>Retrieve Scan</button>
+      </div>
+    );
+  }
 }
 
 export default Landing;
