@@ -3,6 +3,7 @@ import "./Result.css";
 import OfflineBoltIcon from "@material-ui/icons/OfflineBolt";
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 import ReactCardFlip from "react-card-flip";
+import ScrollToBottom from "react-scroll-to-bottom";
 
 function Result({
   alert,
@@ -32,7 +33,6 @@ function Result({
             <strong>• CWE id: {cweid}</strong>
             <strong>• WASC id: {wascid}</strong>
             <strong>• Instances: {inst}</strong>
-            // <strong>• Reference: {refer}</strong>
           </p>
 
           <h3>Description</h3>
