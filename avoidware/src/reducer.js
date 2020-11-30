@@ -17,6 +17,12 @@ const reducer = (state, action) => {
         alertList: action.item,
       };
 
+    case "CLEAR_ALERTS":
+      return {
+        ...state,
+        alertList: [],
+      };
+
     case "SET_URL":
       return {
         ...state,

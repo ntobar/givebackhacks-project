@@ -4,7 +4,17 @@ import OfflineBoltIcon from "@material-ui/icons/OfflineBolt";
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 import ReactCardFlip from "react-card-flip";
 
-function Result({ alert, conf, risk, cweid, wascid, inst, desc, solution }) {
+function Result({
+  alert,
+  conf,
+  risk,
+  cweid,
+  wascid,
+  inst,
+  desc,
+  solution,
+  refer,
+}) {
   document.body.style = "background:#2f4454 ";
 
   return (
@@ -22,6 +32,7 @@ function Result({ alert, conf, risk, cweid, wascid, inst, desc, solution }) {
             <strong>• CWE id: {cweid}</strong>
             <strong>• WASC id: {wascid}</strong>
             <strong>• Instances: {inst}</strong>
+            // <strong>• Reference: {refer}</strong>
           </p>
 
           <h3>Description</h3>

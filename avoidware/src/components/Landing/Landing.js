@@ -145,10 +145,17 @@ function Landing() {
     // .then(console.log("resALERTS SET TO --> ", resAlerts));
   };
 
+  const retrieveSetup = () => {
+    setLoading("none");
+    setRetrieve(true);
+  };
+
   const sendUrlSpider = (e) => {
     setDisplay("none");
     // setTimeout(setDisplay("flex"), 3000);
     setLoading("true");
+    setTimeout(retrieveSetup, 3000);
+
     console.log("sendURL being called");
     try {
       sendDataSpider(url);
@@ -166,10 +173,10 @@ function Landing() {
     // });
   };
 
-  const sendUrlScan = (e) => {
+  const sendUrlScan = async (e) => {
     console.log("sendURL being called");
     try {
-      sendDataScan(url);
+      await sendDataScan(url);
       setURL(url);
       //postData("http://localhost:3000/scan", { url: url }).then((data) => {
       //console.log("urlrurrrurlr", data); // JSON data parsed by `data.json()` call
@@ -221,9 +228,14 @@ function Landing() {
   //For loading spinner
   if (loading === "flex" && retrieve === false) {
     return (
-      <div className="spinner">
-        <div style={{ display: loading }}>
-          <Spinner />
+      <div className="home_spinner">
+        <div className="home_container">
+          <div className="spinner">
+            <h1 className="heading_spinner"> Scanning Webpage ... </h1>
+            <div style={{ display: loading }}>
+              <Spinner />
+            </div>
+          </div>
         </div>
       </div>
     );
@@ -232,8 +244,13 @@ function Landing() {
   //After spinner, only retrieve data button shows
   if (loading === "none" && retrieve === true) {
     return (
-      <div>
-        <button onClick={sendUrlScan}>Retrieve Scan</button>
+      <div className="home">
+        <div className="home_container">
+          <div className="title_container">
+            <h1 className="info">Click to retrieve your data</h1>
+            <button onClick={sendUrlScan}>See Results</button>
+          </div>
+        </div>
       </div>
     );
   }

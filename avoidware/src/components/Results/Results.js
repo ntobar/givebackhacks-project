@@ -13,6 +13,15 @@ function Results() {
   // const firstAlert = lovs[0];
   const firstAlert = alertList[0];
   console.log("firstAlert -> ", firstAlert);
+
+  useEffect(() => {
+    return () => {
+      dispatch({
+        type: "CLEAR_ALERTS",
+      });
+    };
+  }, []);
+
   //const desc = firstAlert.alert;
 
   //const desc = firstAlert.desc;
@@ -41,6 +50,7 @@ function Results() {
           inst={item.count}
           desc={item.desc}
           solution={item.solution}
+          refer={item.reference}
         />
       ))}
     </div>
