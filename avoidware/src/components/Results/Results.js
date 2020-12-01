@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 import "./Results.css";
 import Result from "../Result/Result";
+import ErrorIcon from "@material-ui/icons/Error";
+import ErrorOutlineIcon from "@material-ui/icons/ErrorOutline";
 import { useHistory, useLocation } from "react-router-dom";
 import { useStateValue } from "../../StateProvider";
 
@@ -38,7 +40,8 @@ function Results() {
         <h1>Results for:</h1>
         <h2 className="url">{url}</h2>
       </div>
-      <h1>Alerts:{alertList.length} </h1>
+      <ErrorOutlineIcon className="icon" />
+      <h1>Alerts found: {alertList.length} </h1>
 
       {alertList?.map((item) => (
         <Result

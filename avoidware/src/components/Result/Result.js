@@ -4,6 +4,8 @@ import OfflineBoltIcon from "@material-ui/icons/OfflineBolt";
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 import ReactCardFlip from "react-card-flip";
 import ScrollToBottom from "react-scroll-to-bottom";
+import ErrorIcon from "@material-ui/icons/Error";
+import BuildIcon from "@material-ui/icons/Build";
 
 function Result({
   alert,
@@ -72,6 +74,7 @@ function Result({
         </div>
 
         <div className="v_sol">
+          <BuildIcon className="icon" />
           <h3>Solution</h3>
           <div dangerouslySetInnerHTML={{ __html: solution }}></div>
         </div>
