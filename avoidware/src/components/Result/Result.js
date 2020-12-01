@@ -57,16 +57,17 @@ function Result({
           </div>
 
           <div className="ratings">
-            <p className="result_rating">
-              <strong>• Confidence: {conf}</strong>
-              <strong>• Risk: {risk}</strong>
-              <strong>• CWE id: {cweid}</strong>
-              <strong>• WASC id: {wascid}</strong>
-              <strong>• Instances: {inst}</strong>
-            </p>
+            <div className="listings">
+              <p className="result_rating">
+                <strong>• Confidence: {conf}</strong>
+                <strong>• Risk: {risk}</strong>
+                <strong>• CWE id: {cweid}</strong>
+                <strong>• WASC id: {wascid}</strong>
+                <strong>• Instances: {inst}</strong>
+              </p>
+            </div>
             <h3>Description</h3>
             <div dangerouslySetInnerHTML={{ __html: desc }}></div>
-            <h2> Hover for Solution </h2>
           </div>
         </div>
 
