@@ -38,7 +38,7 @@ function Results() {
         <h1>Results for:</h1>
         <h2 className="url">{url}</h2>
       </div>
-      <h1> Alerts: {alertList.length}</h1>
+      <h1>Alerts:{alertList.length} </h1>
 
       {alertList?.map((item) => (
         <Result

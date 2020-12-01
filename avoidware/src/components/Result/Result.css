@@ -6,6 +6,7 @@
   margin-right: auto;
   margin-bottom: 30px;
   width: 60%;
+
   border: 2px solid #66fcf1;
   border-radius: 10px;
   position: relative;
@@ -33,18 +34,55 @@
   color: black;
 }
 
+.ratings > button {
+  display: block;
+  margin: auto;
+  margin-bottom: 20px;
+  justify-content: center;
+  align-items: center;
+  height: 54px;
+  width: 20%;
+  background-color: #66fcf1;
+  color: black;
+  border: 2px solid black;
+  border-radius: 10px;
+  outline: none;
+}
+
+.buttonFlip:hover {
+  background-color: #1f2833;
+  color: white;
+  border: 3px solid #66fcf1;
+}
+
+.buttonFlip {
+  transform: rotateY(180deg);
+}
+
 .title {
   border-bottom: 2px solid #66fcf1;
   color: #66fcf1;
 }
 
 .v_desc {
-  position: absolute;
+  position: relative;
+  display: flex;
+  flex-direction: column;
   backface-visibility: hidden;
   background-color: #2f4454;
   width: 100%;
+}
+
+.v_sol {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  width: 100%;
   height: 100%;
-  overflow-x: visible;
+  background-color: #2f4454;
+  backface-visibility: hidden;
+  transform: rotateY(180deg);
 }
 
 .icon {
@@ -92,18 +130,6 @@
   margin-bottom: 5px;
 }
 .result:hover {
-  transform: rotateY(180deg);
-}
-
-.v_sol {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-color: #2f4454;
-  backface-visibility: hidden;
   transform: rotateY(180deg);
 }
 
