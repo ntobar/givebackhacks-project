@@ -192,7 +192,7 @@ function Landing() {
 
     history.push({
       pathname: "/results",
-      state: { lovs: arrayV },
+      // state: { lovs: arrayV },
     });
   };
 
