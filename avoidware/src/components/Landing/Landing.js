@@ -201,7 +201,7 @@ function Landing() {
       <div className="home">
         <div className="home_container">
           <div style={{ display: display }} className="title_container">
-            <h1 className="heading">Clear URL</h1>
+            <h1 className="heading">WebShield</h1>
             <p className="info">
               An automated malware scan tool for any web page
             </p>
