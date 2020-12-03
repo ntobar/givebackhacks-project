@@ -6,10 +6,10 @@
   margin-right: auto;
   margin-bottom: 30px;
   width: 60%;
-  box-shadow: 10px 10px 10px 10px black;
+  box-shadow: 5px 10px 10px #66fcf1;
 
   /* border: 2px solid #66fcf1; */
-  border-radius: 10px;
+  /* border-radius: 10px; */
 
   color: white;
   transform-style: preserve-3d;
