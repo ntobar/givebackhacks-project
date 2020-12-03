@@ -8,6 +8,21 @@ import LinearProgress from "@material-ui/core/LinearProgress";
 import { useHistory } from "react-router-dom";
 import { useStateValue } from "../../StateProvider";
 import Spinner from "../Spinner/Spinner";
+import LogoIcon from "../../img/logoIcon.png";
+
+import { useDencrypt } from "use-dencrypt-effect";
+
+// const values = [
+//   "WebShield",
+//   "An automated",
+//   "malware scan tool",
+//   "for any web page",
+// ];
+
+const values = ["an automated vulnerability scanner for any web page"];
+const options = {
+  chars: ["_"],
+};
 
 function Landing() {
   const [{ alertList }, dispatch] = useStateValue();
@@ -20,6 +35,22 @@ function Landing() {
   const [disabled, setDisabled] = useState(true);
   const [display, setDisplay] = useState(null);
   const [retrieve, setRetrieve] = useState(false);
+
+  const { result, dencrypt } = useDencrypt(options);
+
+  React.useEffect(() => {
+    let i = 0;
+
+    const action = setInterval(() => {
+      dencrypt(values[i]);
+
+      i = i === values.length - 1 ? 0 : i + 1;
+    }, 2000);
+
+    return () => clearInterval(action);
+  }, []);
+
+  //decrypt effect
 
   const setList = (item) => {
     dispatch({
@@ -201,10 +232,10 @@ function Landing() {
       <div className="home">
         <div className="home_container">
           <div style={{ display: display }} className="title_container">
+            <img className="header_logo" src={LogoIcon} />
             <h1 className="heading">WebShield</h1>
-            <p className="info">
-              An automated malware scan tool for any web page
-            </p>
+            <p className="info2">{result}</p>
+
             <div className="url_textField">
               <input
                 placeholder="Paste your URL here"

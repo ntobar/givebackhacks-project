@@ -135,13 +135,16 @@
   margin-top: 20px;
 }
 
+.icon_title {
+}
+
 .result_rating {
 }
 
 .result_rating > strong {
   margin-bottom: 5px;
 }
-.result:hover {
+.resultt:hover {
   transform: rotateY(180deg);
 }
 
