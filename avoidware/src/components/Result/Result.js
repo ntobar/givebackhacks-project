@@ -76,7 +76,10 @@ function Result({
         <div className="v_sol">
           <BuildIcon className="icon" />
           <h3>Solution</h3>
-          <div dangerouslySetInnerHTML={{ __html: solution }}></div>
+          <div
+            className="reveal_solution"
+            dangerouslySetInnerHTML={{ __html: solution }}
+          ></div>
         </div>
       </div>
     </div>
