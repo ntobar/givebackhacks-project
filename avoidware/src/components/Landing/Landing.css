@@ -1,6 +1,7 @@
 .home,
 .home_spinner {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   text-align: center;
   align-items: center;
@@ -96,6 +97,11 @@
   border-radius: 8px;
 }
 
+.url_textField > p {
+  color: grey;
+  font-size: 0.8em;
+}
+
 .urlInput {
   display: flex;
   flex-direction: column;
@@ -140,4 +146,11 @@
   align-items: center;
   height: 100vh;
   z-index: 1;
+}
+
+.how_it_works {
+  /* flex-direction: column; */
+  width: 60%;
+  height: 100vh;
+  background-color: red;
 }

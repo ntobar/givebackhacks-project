@@ -249,9 +249,15 @@ function Landing() {
               <button disabled={disabled} onClick={sendUrlSpider}>
                 Test
               </button>
+              <p>
+                Disclaimer: You should only scan webpages which you have been
+                given permission to test.
+              </p>
             </div>
           </div>
         </div>
+
+        <div className="how_it_works"></div>
       </div>
     );
   }
