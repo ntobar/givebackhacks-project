@@ -6,6 +6,7 @@ import ReactCardFlip from "react-card-flip";
 import ScrollToBottom from "react-scroll-to-bottom";
 import ErrorIcon from "@material-ui/icons/Error";
 import BuildIcon from "@material-ui/icons/Build";
+import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 
 function Result({
   alert,
@@ -76,6 +77,7 @@ function Result({
         <div className="v_sol">
           <BuildIcon className="icon" />
           <h3>Solution</h3>
+          <ArrowDropDownIcon className="dropdown_icon" />
           <div
             className="reveal_solution"
             dangerouslySetInnerHTML={{ __html: solution }}

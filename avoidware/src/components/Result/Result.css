@@ -24,6 +24,10 @@
   transform: scale(1.05);
 }
 
+.dropdown_icon {
+  color: #66fcf1;
+}
+
 .url_title {
   text-align: center;
 }
@@ -92,6 +96,10 @@
   background: #2f4454;
   /* padding-bottom: 50px; */
   transition: 0.5s ease-in-out;
+}
+
+.v_sol > h3 {
+  margin-bottom: 0;
 }
 
 /* .v_sol:hover {
