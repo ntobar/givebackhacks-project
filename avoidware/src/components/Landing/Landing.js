@@ -9,6 +9,7 @@ import { useHistory } from "react-router-dom";
 import { useStateValue } from "../../StateProvider";
 import Spinner from "../Spinner/Spinner";
 import LogoIcon from "../../img/logoIcon.png";
+import About from "../About/About";
 
 import { useDencrypt } from "use-dencrypt-effect";
 
@@ -185,7 +186,7 @@ function Landing() {
     setDisplay("none");
     // setTimeout(setDisplay("flex"), 3000);
     setLoading("true");
-    setTimeout(retrieveSetup, 3000);
+    setTimeout(retrieveSetup, 5000);
 
     console.log("sendURL being called");
     try {
@@ -257,7 +258,7 @@ function Landing() {
           </div>
         </div>
 
-        <div className="how_it_works"></div>
+        <About />
       </div>
     );
   }

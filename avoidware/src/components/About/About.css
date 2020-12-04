@@ -1,0 +1,19 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* flex-direction: column; */
+  width: 60%;
+  height: 100vh;
+  background-color: #2f4454;
+  background-color: #45a293;
+  color: #45a293;
+}
+
+.web_shield_desc {
+}
+
+.web_shield_desc > h1 {
+  background: black;
+  color: #2f4454;
+}

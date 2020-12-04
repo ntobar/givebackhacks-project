@@ -152,5 +152,7 @@
   /* flex-direction: column; */
   width: 60%;
   height: 100vh;
-  background-color: red;
+  background-color: #2f4454;
+  background-color: #45a293;
+  color: #45a293;
 }
