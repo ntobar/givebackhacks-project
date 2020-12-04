@@ -8,6 +8,7 @@
   width: 60%;
   box-shadow: 5px 10px 10px #66fcf1;
   box-shadow: 0 0 80px -10px #66fcf1;
+  box-shadow: 0 0 80px -10px black;
   border-radius: 10px;
 
   /* border: 2px solid #66fcf1; */
@@ -100,9 +101,10 @@
 .reveal_solution {
   width: 100%;
   margin-top: -55px;
+
   visibility: hidden;
   opacity: 0;
-  transition: 0.5s ease-in-out;
+  transition: 0.8s ease-in-out;
   background-color: #87919e;
   border: 2px solid #66fcf1;
   border-radius: 10px;
@@ -118,14 +120,17 @@
 
 .icon {
   margin-top: 20px;
-  transition: transform 1.5s ease-in-out;
+  -webkit-transition: all 1.5s ease-in-out;
+  transition: all 1.5s ease-in-out;
   transform-style: preserve-3d;
+  display: inline-block;
 }
 
 .result:hover .icon {
-  transition: transform 1.5s ease-in-out;
+  -webkit-transition: all 1.5s ease-in-out;
+  transition: all 1.5s ease-in-out;
   transform-style: preserve-3d;
-  transform: rotateY(180deg);
+  transform: rotateY(360deg);
 }
 
 /* .reveal_solution {
