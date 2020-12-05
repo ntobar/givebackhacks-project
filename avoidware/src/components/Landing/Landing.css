@@ -148,11 +148,6 @@
   z-index: 1;
 }
 
-.how_it_works {
-  /* flex-direction: column; */
-  width: 60%;
-  height: 100vh;
-  background-color: #2f4454;
-  background-color: #45a293;
-  color: #45a293;
+.what_is {
+  color: white;
 }
