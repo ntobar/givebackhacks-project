@@ -70,6 +70,20 @@ function Landing() {
     });
   };
 
+  //ValidURL function from Stack Overflow, to check if a URL is valid
+  function validURL(str) {
+    var pattern = new RegExp(
+      "^(https?:\\/\\/)?" + // protocol
+      "((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|" + // domain name
+      "((\\d{1,3}\\.){3}\\d{1,3}))" + // OR ip (v4) address
+      "(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*" + // port and path
+      "(\\?[;&a-z\\d%_.~+=-]*)?" + // query string
+        "(\\#[-a-z\\d_]*)?$",
+      "i"
+    ); // fragment locator
+    return !!pattern.test(str);
+  }
+
   async function postData(urlurl = "", data = {}) {
     // Default options are marked with *
     const response = fetch(urlurl, {
@@ -149,12 +163,18 @@ function Landing() {
     console.log("data is -->", data);
     setLoading("flex");
 
+    if (!validURL(data)) {
+      console.log("URL NOT VALID");
+    }
+
     try {
       const response = await fetch("http://127.0.0.1:3050/scan", {
         method: "post",
         body: JSON.stringify({ uri: data }),
         headers: { "Content-Type": "application/json" },
       });
+
+      console.log("sendDataSpider res --> ", response);
 
       // const resAlert = await response.json();
       // window.data = resAlert;
@@ -169,7 +189,7 @@ function Landing() {
       //   console.log(error);
       // }
     } catch (err) {
-      console.log(err);
+      console.log("sendDataSpider err --> ", err);
     }
 
     // .then((response) => response.json())
