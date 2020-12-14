@@ -261,8 +261,6 @@ function Landing() {
           </div>
         </div>
 
-        <LiquidBar />
-        <ProgressBar />
         <h1 className="what_is">How It Works?</h1>
 
         <About />
@@ -278,7 +276,7 @@ function Landing() {
           <div className="spinner">
             <h1 className="heading_spinner"> Scanning Webpage ... </h1>
             <div style={{ display: loading }}>
-              <LiquidBar percentage={percentage} />
+              <LiquidBar />
             </div>
           </div>
         </div>
