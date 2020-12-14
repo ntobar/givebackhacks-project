@@ -8,6 +8,8 @@ import LinearProgress from "@material-ui/core/LinearProgress";
 import { useHistory } from "react-router-dom";
 import { useStateValue } from "../../StateProvider";
 import Spinner from "../Spinner/Spinner";
+import ProgressBar from "../ProgressBar/ProgressBar";
+import LiquidBar from "../LiquidBar/LiquidBar";
 import LogoIcon from "../../img/logoIcon.png";
 import About from "../About/About";
 
@@ -36,6 +38,7 @@ function Landing() {
   const [disabled, setDisabled] = useState(true);
   const [display, setDisplay] = useState(null);
   const [retrieve, setRetrieve] = useState(false);
+  const [percentage, setPercentage] = useState(0);
 
   const { result, dencrypt } = useDencrypt(options);
 
@@ -258,7 +261,10 @@ function Landing() {
           </div>
         </div>
 
+        <LiquidBar />
+        <ProgressBar />
         <h1 className="what_is">How It Works?</h1>
+
         <About />
       </div>
     );
@@ -272,7 +278,7 @@ function Landing() {
           <div className="spinner">
             <h1 className="heading_spinner"> Scanning Webpage ... </h1>
             <div style={{ display: loading }}>
-              <Spinner />
+              <LiquidBar percentage={percentage} />
             </div>
           </div>
         </div>
