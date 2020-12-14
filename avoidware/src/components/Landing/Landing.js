@@ -7,6 +7,8 @@ import { Button } from "@material-ui/core";
 import LinearProgress from "@material-ui/core/LinearProgress";
 import { useHistory } from "react-router-dom";
 import { useStateValue } from "../../StateProvider";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import Spinner from "../Spinner/Spinner";
 import ProgressBar from "../ProgressBar/ProgressBar";
 import LiquidBar from "../LiquidBar/LiquidBar";
@@ -39,8 +41,11 @@ function Landing() {
   const [display, setDisplay] = useState(null);
   const [retrieve, setRetrieve] = useState(false);
   const [percentage, setPercentage] = useState(0);
-
+  const [validWeb, setValidWeb] = useState(true);
+  //For the landing page description decrypt effect
   const { result, dencrypt } = useDencrypt(options);
+  //For the toaster notifications
+  const notify = () => toast("Wow so easy !");
 
   React.useEffect(() => {
     let i = 0;
@@ -159,13 +164,26 @@ function Landing() {
     // .then(console.log("resALERTS SET TO --> ", resAlerts));
   };
 
+  const emitError = () => {
+    toast.error("⚠️ Please enter a valid URL!", {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+  };
+
   const sendDataSpider = async (data) => {
     console.log("data is -->", data);
     setLoading("flex");
 
-    if (!validURL(data)) {
-      console.log("URL NOT VALID");
-    }
+    // if (!validURL(data)) {
+    //   setValidWeb(false);
+    //   console.log("URL NOT VALID");
+    // }
 
     try {
       const response = await fetch("http://127.0.0.1:3050/scan", {
@@ -251,10 +269,19 @@ function Landing() {
     });
   };
 
+  const onClickFunction = () => {
+    if (validURL(url)) {
+      sendUrlSpider();
+    } else {
+      emitError();
+    }
+  };
+
   if (loading === "none" && retrieve === false) {
     return (
       <div className="home">
         <div className="home_container">
+          <ToastContainer style={{ width: "600px" }} />
           <div style={{ display: display }} className="title_container">
             <img className="header_logo" src={LogoIcon} />
             <h1 className="heading">WebShield</h1>
@@ -270,7 +297,7 @@ function Landing() {
                   setDisabled(false);
                 }}
               />
-              <button disabled={disabled} onClick={sendUrlSpider}>
+              <button disabled={disabled} onClick={onClickFunction}>
                 Test
               </button>
               <p>
