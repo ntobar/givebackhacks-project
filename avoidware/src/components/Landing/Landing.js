@@ -308,9 +308,11 @@ function Landing() {
           </div>
         </div>
 
-        <h1 className="what_is">How It Works?</h1>
+        <div className="about_container">
+          <h1 className="what_is">How It Works?</h1>
 
-        <About />
+          <About />
+        </div>
       </div>
     );
   }

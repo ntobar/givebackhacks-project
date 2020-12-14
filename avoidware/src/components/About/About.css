@@ -3,7 +3,9 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 80%;
+  /* width: 100%; */
+  height: auto;
+  border: 2px solid red;
 }
 
 .web_shield_desc {
@@ -15,7 +17,7 @@
   /* align-items: center; */
 
   /* flex-direction: column; */
-  width: 80%;
+  /* width: 95%; */
   height: 30vh;
   height: 100%;
 
@@ -76,9 +78,4 @@
 .icons {
   max-width: 150px;
   height: auto;
-  /* max-height: 200px;
-  width: auto; */
-  /* position: absolute; */
-  /* top: 112%;
-  margin-left: 5%; */
 }

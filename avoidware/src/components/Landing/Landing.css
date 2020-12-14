@@ -33,6 +33,12 @@
   height: 100vh;
 }
 
+.about_container {
+  width: 80%;
+  border: 2px solid white;
+  border-radius: 10%;
+}
+
 .url_textField {
   display: flex;
   flex-direction: row;
