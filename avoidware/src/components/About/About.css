@@ -1,11 +1,10 @@
 .container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: stretch;
   align-items: center;
-  /* width: 100%; */
-  height: auto;
-  border: 2px solid red;
+  width: 600px;
+  height: 100%;
 }
 
 .web_shield_desc {
@@ -18,8 +17,9 @@
 
   /* flex-direction: column; */
   /* width: 95%; */
-  height: 30vh;
+  /* height: 30vh; */
   height: 100%;
+  width: 100%;
 
   background-color: #45a293;
   background-color: #2f4454;
@@ -61,6 +61,7 @@
 
 .first_step {
   display: flex;
+  min-width: 300px;
   flex: 1;
   flex-direction: row;
   color: black;

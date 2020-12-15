@@ -10,7 +10,7 @@ import Cyborg3 from "../../img/cyborg3.png";
 
 function About() {
   return (
-    <div className="container">
+    <div className="container_A">
       <div className="web_shield_desc">
         <div className="sections">
           <img className="icons" src={Cyborg1} />
