@@ -42,6 +42,7 @@ function Landing() {
   const [retrieve, setRetrieve] = useState(false);
   const [percentage, setPercentage] = useState(0);
   const [validWeb, setValidWeb] = useState(true);
+  const [error, setError] = useState(false);
   //For the landing page description decrypt effect
   const { result, dencrypt } = useDencrypt(options);
   //For the toaster notifications
@@ -150,6 +151,7 @@ function Landing() {
         //console.log("Current Site Alerts -> ", lov);
         //console.log("EASYA check -->", siteFind);
       } catch (error) {
+        setError(true);
         console.log(error);
       }
     } catch (err) {
