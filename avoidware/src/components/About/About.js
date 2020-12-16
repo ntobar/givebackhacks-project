@@ -43,19 +43,6 @@ function About() {
           </div>
         </div>
       </div>
-
-      <h1 className="what_is">How It Works?</h1>
-
-      <div className="web_shield_desc">
-        <p>
-          <p>
-            WebShield is an automated Web Application that scans security
-            vulnerabilities in any website.
-          </p>
-          We use the OWASP Zed Attack Proxy (ZAP) API to be able to scan a web
-          site for potential vulnerabilities.
-        </p>
-      </div>
     </div>
   );
 }

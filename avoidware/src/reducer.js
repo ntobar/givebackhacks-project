@@ -1,5 +1,6 @@
 export const initialState = {
   alertList: [],
+  error: "",
   url: null,
 };
 
@@ -15,6 +16,12 @@ const reducer = (state, action) => {
       return {
         ...state,
         alertList: action.item,
+      };
+
+    case "SET_ERROR":
+      return {
+        ...state,
+        error: action.item,
       };
 
     case "CLEAR_ALERTS":

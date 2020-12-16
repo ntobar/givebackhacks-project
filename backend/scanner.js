@@ -36,7 +36,10 @@ exports.scanUrl = function (req, res) {
     function (err, data) {
       if (err) {
         res.status(err.statusCode);
-        res.send(err.error);
+        res.send({
+          status: "error",
+          message: err.error,
+        });
       } else {
         // res.status('200');
         // console.log('Data:', data);

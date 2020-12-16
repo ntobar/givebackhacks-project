@@ -43,6 +43,7 @@ function Landing() {
   const [percentage, setPercentage] = useState(0);
   const [validWeb, setValidWeb] = useState(true);
   const [error, setError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
   //For the landing page description decrypt effect
   const { result, dencrypt } = useDencrypt(options);
   //For the toaster notifications
@@ -72,6 +73,13 @@ function Landing() {
   const setURL = (item) => {
     dispatch({
       type: "SET_URL",
+      item: item,
+    });
+  };
+
+  const dispatchError = (item) => {
+    dispatch({
+      type: "SET_ERROR",
       item: item,
     });
   };
@@ -125,9 +133,19 @@ function Landing() {
       window.data = resAlert;
       setAlerts(resAlert);
       console.log("resAlert ->>", resAlert);
+      console.log("resAlert status -> ", resAlert.status);
+      console.log("bool check ->", resAlert.status === "error");
+      if (resAlert.status === "error") {
+        console.log("status res alert BLOCK");
+        setError(true);
+        // setErrorMessage(resAlert.message);
+        dispatchError(resAlert.message);
+        return false;
+      }
 
       try {
         console.log("------------site find start----------------");
+
         console.log("---- data.site ---- ", resAlert.data.site);
         console.log(
           "------ @name ------ ",
@@ -154,8 +172,10 @@ function Landing() {
         setError(true);
         console.log(error);
       }
+      return true;
     } catch (err) {
       console.log(err);
+      return false;
     }
 
     // .then((response) => response.json())
@@ -248,17 +268,31 @@ function Landing() {
     // });
   };
 
+  const redirectToError = () => {
+    history.push({
+      pathname: "/error",
+    });
+  };
+
   const sendUrlScan = async (e) => {
     console.log("sendURL being called");
+
     try {
-      await sendDataScan(url);
+      const sendDataResults = await sendDataScan(url);
       setURL(url);
       //postData("http://localhost:3000/scan", { url: url }).then((data) => {
       //console.log("urlrurrrurlr", data); // JSON data parsed by `data.json()` call
       //});
+      if (sendDataResults === false) {
+        console.log("in sendUrlScan ->", sendDataResults);
+        redirectToError();
+        return null;
+      }
     } catch (err) {
       console.log("err");
     }
+
+    console.log("error is-> ", error);
 
     // dispatch({
     //   type: "SET_ALERTS",
